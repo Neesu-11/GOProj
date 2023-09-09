@@ -3,5 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("Hi Mom!")
+
+	x := "hello mom"
+	fmt.Print(x)
 }
