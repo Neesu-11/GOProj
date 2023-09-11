@@ -47,7 +47,7 @@ func Register(c *fiber.Ctx) error {
 
 	//check if email already exist in db
 
-	database.DB.Where("email=?", strings.TrimSpace(data["email"].(string))).First(&userData)
+	database.DB.Where("email_id=?", strings.TrimSpace(data["email"].(string))).First(&userData)
 
 	if userData.Id != 0 {
 		c.Status(400)
@@ -58,23 +58,23 @@ func Register(c *fiber.Ctx) error {
 
 	user := models.User{
 		FirstName: data["first_name"].(string),
-		LastName:  data["last_name"].(string), 
+		LastName:  data["last_name"].(string),
 		Phone:     data["phone"].(string),
-		EmailId:     strings.TrimSpace(data["email"].(string)),
+		Email_id:  strings.TrimSpace(data["email"].(string)),
 	}
 
 	user.SetPassword(data["password"].(string))
 
-	err:=database.DB.Create(&user) 
+	err := database.DB.Create(&user)
 	if err != nil {
 		log.Println(err)
-		
-	} 
-		c.Status(200)
-		return c.JSON(fiber.Map{
 
-			"user": user,
-			"message": "Account Created Successfully",
-		})
-	
+	}
+	c.Status(200)
+	return c.JSON(fiber.Map{
+
+		"user":    user,
+		"message": "Account Created Successfully",
+	})
+
 }

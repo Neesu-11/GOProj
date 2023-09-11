@@ -7,7 +7,7 @@ type User struct {
 	Id        uint   `json : "id"`
 	FirstName string `json : first_name`
 	LastName  string `json : last_name`
-	EmailId   string `json : email`
+	Email_id  string `json : email`
 	Password  []byte `json :"-"`
 	Phone     string `json : phone`
 }
