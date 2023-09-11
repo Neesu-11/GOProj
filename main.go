@@ -20,7 +20,7 @@ func main() {
 
 	port := os.Getenv("PORT")
 	app := fiber.New()
-	app.Listen(":" + port) //port listening 
-
 	routes.Setup(app)
+	app.Listen(":" + port) //port listening
+
 }
